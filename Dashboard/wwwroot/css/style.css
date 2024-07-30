@@ -33,9 +33,9 @@ p {
 }
 
 .star-rating .star {
-    font-size: 30px;
     cursor: pointer;
-    margin: 0 5px;
+    font-size: 2em;
+    color: gray;
 }
 
 .star-rating .star:hover,
