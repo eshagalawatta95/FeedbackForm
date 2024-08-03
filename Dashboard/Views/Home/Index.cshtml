@@ -3,46 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback Form</title>
+    <title>Smart Rose Quality Analysis Web Application</title>
     <link href="~/css/style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <div class="feedback-container">
-        <h1>Give us your valuable feedback</h1>
-        <p>Your feedback is very important to us</p>
-        <form id="feedback-form">
-            <div class="rating-section">
-                <label for="star-rating">Please rate your experience:</label>
-                <div id="star-rating" class="star-rating">
-                    <span class="star" data-value="1">&#9733;</span>
-                    <span class="star" data-value="2">&#9733;</span>
-                    <span class="star" data-value="3">&#9733;</span>
-                    <span class="star" data-value="4">&#9733;</span>
-                    <span class="star" data-value="5">&#9733;</span>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-circle"></div>
+                <span>SMART ROSE QUALITY ANALYSIS SYSTEM</span>
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item active" onclick="navigateTo('home')">
+                    <i class="fa fa-home"></i>
+                    <span>Home</span>
+                </li>
+                <li class="nav-item" onclick="navigateTo('dashboard')">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Dashboard</span>
+                </li>
+                <li class="nav-item" onclick="navigateTo('reports')">
+                    <i class="icon reports-icon"></i>
+                    <span>Reports</span>
+                </li>
+                <li class="nav-item" onclick="navigateTo('advices')">
+                    <i class="icon advices-icon"></i>
+                    <span>Advices</span>
+                </li>
+                <li class="nav-item" onclick="navigateTo('global-market')">
+                    <i class="icon global-market-icon"></i>
+                    <span>Global Market</span>
+                </li>
+                <li class="nav-item" onclick="navigateTo('feedback')">
+                    <i class="icon feedback-icon"></i>
+                    <span>Feedback</span>
+                </li>
+
+            </ul>
+            <div class="contact-us">
+                <img src="img/1.jpg" alt="Roses">
+                <button>Contact us</button>
+            </div>
+        </div>
+        <div class="content">
+            <div class="header">
+                <input type="text" placeholder="Search here" class="search-bar" style="width: 50%;">
+                <div class="profile">
+                    <span>Profile</span>
+                    <i class="icon profile-icon"></i>
                 </div>
             </div>
-            <div class="input-section">
-                <label for="feedback">What do you want to say?</label>
-                <textarea id="feedback" placeholder="Enter your feedback here..." required></textarea>
+            <div id="home" class="tab-content active">
+                <div class="home-div">
+                    <h1>Welcome to <span>SmartRose</span></h1>
+                    <p>Join us to check the quality of your Roses.</p>
+                    <p>The primary focus of quality management is to meet customer requirements and to strive to exceed customer expectations. Sustained success is achieved when an organization attracts and retains the confidence of customers and other interested parties.</p>
+                </div>
+
             </div>
-            <div class="input-section">
-                <label>Do you want to share this publicly?</label>
-                <label><input type="radio" name="share" value="true" checked> Yes</label>
-                <label><input type="radio" name="share" value="false"> No</label>
+            <div id="dashboard" class="tab-content">Dashboard Content</div>
+            <div id="reports" class="tab-content">Reports Content</div>
+            <div id="global-market" class="tab-content">Global Market Content</div>
+            <div id="feedback" class="tab-content">
+                <div class="feedback-container" style="margin-left: 27%;">
+                    <h1>Give us your valuable feedback</h1>
+                    <p>Your feedback is very important to us</p>
+                    <form id="feedback-form">
+                        <div class="rating-section">
+                            <label for="star-rating">Please rate your experience:</label>
+                            <div id="star-rating" class="star-rating">
+                                <span class="star" data-value="1">&#9733;</span>
+                                <span class="star" data-value="2">&#9733;</span>
+                                <span class="star" data-value="3">&#9733;</span>
+                                <span class="star" data-value="4">&#9733;</span>
+                                <span class="star" data-value="5">&#9733;</span>
+                            </div>
+                        </div>
+                        <div class="input-section">
+                            <label for="feedback">What do you want to say?</label>
+                            <textarea id="feedbackDes" placeholder="Enter your feedback here..."></textarea>
+                        </div>
+                        <div class="input-section">
+                            <label>Do you want to share this publicly?</label>
+                            <label><input type="radio" name="share" value="true" checked> Yes</label>
+                            <label><input type="radio" name="share" value="false"> No</label>
+                        </div>
+                        <div class="input-section">
+                            <label for="nickname">Nickname:</label>
+                            <input type="text" id="nickname" placeholder="Enter your nickname" required>
+                        </div>
+                        <div class="input-section">
+                            <label for="email">Email address (Will not be published):</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="input-section terms">
+                            <label><input type="checkbox" id="terms" required> I accept the <a href="#">terms and conditions</a></label>
+                        </div>
+                        <button type="button" onclick="submitFeedback()">Send</button>
+                    </form>
+                </div>
             </div>
-            <div class="input-section">
-                <label for="nickname">Nickname:</label>
-                <input type="text" id="nickname" placeholder="Enter your nickname" required>
-            </div>
-            <div class="input-section">
-                <label for="email">Email address (Will not be published):</label>
-                <input type="email" id="email" placeholder="Enter your email" required>
-            </div>
-            <div class="input-section terms">
-                <label><input type="checkbox" id="terms" required> I accept the <a href="#">terms and conditions</a></label>
-            </div>
-            <button type="button" onclick="submitFeedback()">Send</button>
-        </form>
+            <div id="advices" class="tab-content">Advices Content</div>
+        </div>
     </div>
     <script src="~/js/script.js"></script>
 </body>

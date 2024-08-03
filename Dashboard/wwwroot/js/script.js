@@ -13,6 +13,29 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+function navigateTo(tabId) {
+    // Remove active class from all nav items
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => item.classList.remove('active'));
+
+    // Add active class to clicked nav item
+    const clickedItem = document.querySelector(`[onclick="navigateTo('${tabId}')"]`);
+    clickedItem.classList.add('active');
+
+    // Hide all tab contents
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabContents.forEach(content => content.classList.remove('active'));
+
+    // Show the selected tab content
+    const activeTab = document.getElementById(tabId);
+    activeTab.classList.add('active');
+}
+
+// Initialize the first tab as active
+document.addEventListener('DOMContentLoaded', () => {
+    navigateTo('home');
+});
+
 
 function validateEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -21,7 +44,7 @@ function validateEmail(email) {
 
 function submitFeedback() {
     const rating = document.querySelector('.star-rating .star.selected')?.dataset.value;
-    const feedbackText = document.getElementById('feedback').value;
+    const feedbackText = $('#feedbackDes').val();
     const share = document.querySelector('input[name="share"]:checked').value === 'true';
     const nickname = document.getElementById('nickname').value;
     const email = document.getElementById('email').value;
